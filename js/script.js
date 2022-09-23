@@ -38,8 +38,6 @@
     },
   ];
 
- 
-
   const render = () => {
     const selectElements = document.querySelectorAll(".js-form-select");
     selectElements.forEach((selectElement) => {
@@ -52,9 +50,19 @@
         selectElement.insertAdjacentHTML("beforeend", optionListString);
       }
     });
-  };
+    document.querySelector(".js-to-currency").getElementsByTagName("option")[1].selected = "selected";
+    selectElements.forEach((selectElement) => {
+      const renderCaption = ({ name, flag }) => {
+        selectElement.parentElement.querySelector(".js-img").src = `https://flagicons.lipis.dev/flags/4x3/${flag}.svg`;
+        selectElement.parentElement.querySelector(".js-caption").innerHTML = `${name}`;
+      };
 
-  
+      renderCaption(currencies[selectElement.selectedIndex]);
+      selectElement.addEventListener("change", () => {
+        renderCaption(currencies[selectElement.selectedIndex]);
+      });
+    });
+  };
 
   const init = () => {
     render();
