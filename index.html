@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Currency Converter</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"
+      integrity="sha512-NhSC1YmyruXifcj/KFRWoC561YpHpc5Jtzgvbuzx5VozKpWvQ+4nXhPdFgmx8xqexRcpAglTj9sIBWINXa8x5w=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+    <link href="css/style.css" rel="stylesheet" />
+    <link href="css/form.css" rel="stylesheet" />
+    <script defer src="js/script.js"></script>
+  </head>
+  <body class="body">
+    <form class="form">
+      <fieldset class="form__fieldset">
+        <legend class="form__legend">Currency Converter</legend>
+        <div class="form__wrapper">
+          <div class="form__amount">
+            <p class="form__paragraph">Enter amount</p>
+            <input class="form__input js-amount" type="text" value="1" />
+          </div>
+          <div class="form__drop-list">
+            <div class="form__divider">
+              <p class="form__paragraph">From</p>
+              <div class="form__select-box">
+                <img class="form__image js-img" src="https://flagicons.lipis.dev/flags/4x3/pl.svg" alt="flag" />
+                <select class="form__select js-form-select"></select>
+                <p class="form__caption js-caption">Złoty polski</p>
+              </div>
+            </div>
+            <div class="form__divider">
+              <p class="form__paragraph">To</p>
+              <div class="form__select-box">
+                <img class="form__image js-img" src="https://flagicons.lipis.dev/flags/4x3/um.svg" alt="flag" />
+                <select class="form__select js-form-select"></select>
+                <p class="form__caption js-caption">Dolar amerykański</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </fieldset>
+    </form>
+  </body>
+</html>
