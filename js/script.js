@@ -74,9 +74,26 @@
     });
   };
 
+  const submitButton = document.querySelector(".js-submit");
+  submitButton.addEventListener("click", (e) => {
+    e.preventDefault();
+    const getRate = () => {
+      const amountInput = document.querySelector(".js-amount");
+      let amount = amountInput.value;
+      const fromCurrency = document.querySelector(".js-from-currency");
+      const toCurrency = document.querySelector(".js-to-currency");
+      const resultField = document.querySelector(".js-result");
+      let result = (+amount * (+currencies[toCurrency.selectedIndex].rate / +currencies[fromCurrency.selectedIndex].rate)).toFixed(2);
+
+      resultField.innerHTML = `${amount} ${currencies[fromCurrency.selectedIndex].code} = ${result} ${currencies[toCurrency.selectedIndex].code}`;
+    };
+    getRate();
+  });
+
   const init = () => {
     preloader();
     render();
+    
   };
 
   init();
