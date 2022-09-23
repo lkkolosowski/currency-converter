@@ -38,6 +38,16 @@
     },
   ];
 
+  const preloader = () => {
+    const preloaderElement = document.querySelector(".js-preloader");
+    let preloaderString = "";
+
+    for (const currency of currencies) {
+      preloaderString += `<img style="opacity: 0;" alt="preload Flag" src="https://flagicons.lipis.dev/flags/4x3/${currency.flag}.svg"/>`;
+    }
+    preloaderElement.innerHTML = preloaderString;
+  };
+
   const render = () => {
     const selectElements = document.querySelectorAll(".js-form-select");
     selectElements.forEach((selectElement) => {
@@ -65,6 +75,7 @@
   };
 
   const init = () => {
+    preloader();
     render();
   };
 
