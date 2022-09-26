@@ -56,9 +56,11 @@
 }
 .form__select {
   grid-area: s;
-  height: 50px;
+  height: 46px;
   border: none;
   outline: none;
+  background: none;
+  box-shadow: inset 0 0 0 1px #fff;
   margin-left: -10px;
 }
 .form__caption {
@@ -99,8 +101,4 @@
 .form__select-box:focus-within {
   padding: 0;
   border: 2px solid #222;
-}
-.form__select {
-  width: auto;
-  background: none;
 }
