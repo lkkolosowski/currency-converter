@@ -10,10 +10,10 @@
   box-shadow: 0 0 8px 0 rgb(34 34 34 / 20%), 0 0 20px 0 rgb(34 34 34 / 20%);
 }
 @media screen and (max-width: 399px) {
-    .form__fieldset {
-        border-radius: 0;
-      }
+  .form__fieldset {
+    border-radius: 0;
   }
+}
 .form__legend {
   color: #fff;
   text-align: center;
@@ -28,6 +28,11 @@
   padding: 40px;
   margin-top: -25px;
   margin-bottom: 29px;
+}
+@media screen and (max-width: 399px) {
+  .form__divider--icon {
+    display: none;
+  }
 }
 .form__paragraph {
   margin-bottom: 5px;
@@ -108,12 +113,12 @@
   border-radius: 29px;
   border: 1px solid #888;
   cursor: pointer;
-  background-color:#fff;
+  background-color: #fff;
   padding: 3px 10px;
   text-transform: uppercase;
 }
 .form__submit:hover {
-  background-color:#f0f2f4;
+  background-color: #f0f2f4;
 }
 
 .form__submit:active {
