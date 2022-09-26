@@ -9,32 +9,44 @@
     {
       code: "USD",
       name: "Dolar amerykański",
-      rate: 0.21,
+      rate: 0.205,
       flag: "um",
     },
     {
       code: "EUR",
       name: "Euro",
-      rate: 0.21,
+      rate: 0.2104,
       flag: "eu",
     },
     {
       code: "JPY",
       name: "Jen japoński",
-      rate: 29.99,
+      rate: 29.3393,
       flag: "jp",
     },
     {
       code: "CZK",
       name: "Korona czeska",
-      rate: 5.19,
+      rate: 5.184,
       flag: "cz",
     },
     {
       code: "HRK",
       name: "Kuna chorwacka",
-      rate: 1.58,
+      rate: 1.5831,
       flag: "hr",
+    },
+    {
+      code: "CHF",
+      name: "Frank szwajcarski",
+      rate: 0.2006,
+      flag: "ch",
+    },
+    {
+      code: "GBP",
+      name: "Funt brytyjski",
+      rate: 0.189,
+      flag: "gb",
     },
   ];
 
