@@ -55,10 +55,9 @@
   const preloader = () => {
     const preloaderElement = document.querySelector(".js-preloader");
     let preloaderString = "";
-
     for (const currency of currencies) {
       preloaderString += `<img style="opacity: 0;" alt="preload Flag" src="https://flagicons.lipis.dev/flags/4x3/${currency.flag}.svg"/>`;
-    }
+    };
     preloaderElement.innerHTML = preloaderString;
   };
 
@@ -94,7 +93,6 @@
     const toCurrency = document.querySelector(".js-to-currency");
     const resultText = document.querySelector(".js-result-text");
     let result = (+amount * (+currencies[toCurrency.selectedIndex].rate / +currencies[fromCurrency.selectedIndex].rate)).toFixed(2);
-
     resultText.innerHTML = `${amount} ${currencies[fromCurrency.selectedIndex].code} = ${result} ${currencies[toCurrency.selectedIndex].code}`;
   };
 
@@ -118,7 +116,7 @@
       const allowedChars = "0123456789.,";
       function contains(stringValue, charValue) {
         return stringValue.indexOf(charValue) > -1;
-      }
+      };
       const invalidKey = (e.key.length === 1 && !contains(allowedChars, e.key)) || (e.key === "." && contains(e.target.value, "."));
       invalidKey && e.preventDefault();
     });
