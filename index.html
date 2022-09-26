@@ -24,7 +24,8 @@
         <div class="form__wrapper">
           <div class="form__amount">
             <p class="form__paragraph">Enter amount</p>
-            <input class="form__input js-amount" type="text" value="1" />
+            <input type="number" class="form__input js-amount" type="text" value="1" />
+              <button class="form__submit js-submit">Get exchange rate</button>
           </div>
           <div class="form__drop-list">
             <div class="form__divider">
@@ -44,8 +45,8 @@
               </div>
             </div>
           </div>
-          <p class="form__result js-result">Get exchange rate</p>
-          <button class="form__submit js-submit">Submit</button>
+          <p class="form__paragraph">Exchange rate</p>
+          <div class="form__result js-result-text"></div>
         </div>
       </fieldset>
     </form>

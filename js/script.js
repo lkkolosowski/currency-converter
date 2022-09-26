@@ -50,6 +50,8 @@
     },
   ];
 
+  const selectElements = document.querySelectorAll(".js-form-select");
+
   const preloader = () => {
     const preloaderElement = document.querySelector(".js-preloader");
     let preloaderString = "";
@@ -61,7 +63,6 @@
   };
 
   const render = () => {
-    const selectElements = document.querySelectorAll(".js-form-select");
     selectElements.forEach((selectElement) => {
       for (const currency of currencies) {
         let optionListString = `
@@ -86,26 +87,48 @@
     });
   };
 
-  const submitButton = document.querySelector(".js-submit");
-  submitButton.addEventListener("click", (e) => {
-    e.preventDefault();
-    const getRate = () => {
-      const amountInput = document.querySelector(".js-amount");
-      let amount = amountInput.value;
-      const fromCurrency = document.querySelector(".js-from-currency");
-      const toCurrency = document.querySelector(".js-to-currency");
-      const resultField = document.querySelector(".js-result");
-      let result = (+amount * (+currencies[toCurrency.selectedIndex].rate / +currencies[fromCurrency.selectedIndex].rate)).toFixed(2);
+  const getRate = () => {
+    const amountInput = document.querySelector(".js-amount");
+    let amount = amountInput.value;
+    const fromCurrency = document.querySelector(".js-from-currency");
+    const toCurrency = document.querySelector(".js-to-currency");
+    const resultText = document.querySelector(".js-result-text");
+    let result = (+amount * (+currencies[toCurrency.selectedIndex].rate / +currencies[fromCurrency.selectedIndex].rate)).toFixed(2);
 
-      resultField.innerHTML = `${amount} ${currencies[fromCurrency.selectedIndex].code} = ${result} ${currencies[toCurrency.selectedIndex].code}`;
-    };
+    resultText.innerHTML = `${amount} ${currencies[fromCurrency.selectedIndex].code} = ${result} ${currencies[toCurrency.selectedIndex].code}`;
+  };
+
+  const getResult = () => {
     getRate();
-  });
+    selectElements.forEach((selectElement) => {
+      selectElement.addEventListener("change", (e) => {
+        e.preventDefault();
+        getRate();
+      });
+    });
+    const submitButton = document.querySelector(".js-submit");
+    submitButton.addEventListener("click", (e) => {
+      e.preventDefault();
+      getRate();
+    });
+  };
+
+  const validateInput = () => {
+    document.querySelector(".js-amount").addEventListener("keypress", function (e) {
+      const allowedChars = "0123456789.,";
+      function contains(stringValue, charValue) {
+        return stringValue.indexOf(charValue) > -1;
+      }
+      const invalidKey = (e.key.length === 1 && !contains(allowedChars, e.key)) || (e.key === "." && contains(e.target.value, "."));
+      invalidKey && e.preventDefault();
+    });
+  };
 
   const init = () => {
     preloader();
     render();
-    
+    getResult();
+    validateInput();
   };
 
   init();
