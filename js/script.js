@@ -2,7 +2,7 @@
   const currencies = [
     {
       code: "PLN",
-      name: "Złoty Polski",
+      name: "Złoty polski",
       rate: 1,
       flag: "pl",
     },
@@ -51,13 +51,14 @@
   ];
 
   const selectElements = document.querySelectorAll(".js-form-select");
+  const amountInput = document.querySelector(".js-amount");
 
   const preloader = () => {
     const preloaderElement = document.querySelector(".js-preloader");
     let preloaderString = "";
     for (const currency of currencies) {
       preloaderString += `<img style="opacity: 0;" alt="preload Flag" src="https://flagicons.lipis.dev/flags/4x3/${currency.flag}.svg"/>`;
-    };
+    }
     preloaderElement.innerHTML = preloaderString;
   };
 
@@ -87,7 +88,6 @@
   };
 
   const getRate = () => {
-    const amountInput = document.querySelector(".js-amount");
     let amount = amountInput.value;
     const fromCurrency = document.querySelector(".js-from-currency");
     const toCurrency = document.querySelector(".js-to-currency");
@@ -104,9 +104,7 @@
         getRate();
       });
     });
-    const submitButton = document.querySelector(".js-submit");
-    submitButton.addEventListener("click", (e) => {
-      e.preventDefault();
+    amountInput.addEventListener("input", () => {
       getRate();
     });
   };
@@ -116,7 +114,7 @@
       const allowedChars = "0123456789.,";
       function contains(stringValue, charValue) {
         return stringValue.indexOf(charValue) > -1;
-      };
+      }
       const invalidKey = (e.key.length === 1 && !contains(allowedChars, e.key)) || (e.key === "." && contains(e.target.value, "."));
       invalidKey && e.preventDefault();
     });
