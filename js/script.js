@@ -75,6 +75,8 @@
   ];
 
   const selectElements = document.querySelectorAll(".js-form-select");
+  const fromCurrency = document.querySelector(".js-from-currency");
+  const toCurrency = document.querySelector(".js-to-currency");
   const amountInput = document.querySelector(".js-amount");
 
   const preloader = () => {
@@ -98,6 +100,9 @@
       }
     });
     document.querySelector(".js-to-currency").getElementsByTagName("option")[1].selected = "selected";
+  };
+
+  const load = () => {
     selectElements.forEach((selectElement) => {
       const renderCaption = ({ name, flag }) => {
         selectElement.parentElement.querySelector(".js-img").src = `https://flagicons.lipis.dev/flags/4x3/${flag}.svg`;
@@ -113,8 +118,6 @@
 
   const getRate = () => {
     let amount = amountInput.value;
-    const fromCurrency = document.querySelector(".js-from-currency");
-    const toCurrency = document.querySelector(".js-to-currency");
     const resultText = document.querySelector(".js-result-text");
     let result = (+amount * (+currencies[toCurrency.selectedIndex].rate / +currencies[fromCurrency.selectedIndex].rate)).toFixed(2);
     resultText.innerHTML = `${amount} ${currencies[fromCurrency.selectedIndex].code} = ${result} ${currencies[toCurrency.selectedIndex].code}`;
@@ -133,6 +136,17 @@
     });
   };
 
+  const swapCurrencies = () => {
+    const exchangeIcon = document.querySelector(".js-exchange-icon");
+    exchangeIcon.addEventListener("click", () => {
+      let bufferValue = fromCurrency.value;
+      fromCurrency.value = toCurrency.value;
+      toCurrency.value = bufferValue;
+      load();
+      getRate();
+    });
+  };
+
   const validateInput = () => {
     document.querySelector(".js-amount").addEventListener("keypress", function (e) {
       const allowedChars = "0123456789.,";
@@ -147,8 +161,10 @@
   const init = () => {
     preloader();
     render();
+    load();
     getResult();
     validateInput();
+    swapCurrencies();
   };
 
   init();

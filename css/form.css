@@ -119,3 +119,6 @@
   border: 1px solid #888;
   background-color: #f0f2f4;
 }
+.form__exchange-icon {
+  cursor: pointer;
+}
