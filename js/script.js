@@ -79,7 +79,7 @@
   const toCurrency = document.querySelector(".js-to-currency");
   const amountInput = document.querySelector(".js-amount");
 
-  const preloader = () => {
+  const preload = () => {
     const preloaderElement = document.querySelector(".js-preloader");
     let preloaderString = "";
     for (const currency of currencies) {
@@ -108,7 +108,6 @@
         selectElement.parentElement.querySelector(".js-img").src = `https://flagicons.lipis.dev/flags/4x3/${flag}.svg`;
         selectElement.parentElement.querySelector(".js-caption").innerHTML = `${name}`;
       };
-
       renderCaption(currencies[selectElement.selectedIndex]);
       selectElement.addEventListener("change", () => {
         renderCaption(currencies[selectElement.selectedIndex]);
@@ -136,7 +135,7 @@
     });
   };
 
-  const swapCurrencies = () => {
+  const swap = () => {
     const exchangeIcon = document.querySelector(".js-exchange-icon");
     exchangeIcon.addEventListener("click", () => {
       let bufferValue = fromCurrency.value;
@@ -147,7 +146,7 @@
     });
   };
 
-  const validateInput = () => {
+  const validate = () => {
     document.querySelector(".js-amount").addEventListener("keypress", function (e) {
       const allowedChars = "0123456789.,";
       function contains(stringValue, charValue) {
@@ -159,12 +158,12 @@
   };
 
   const init = () => {
-    preloader();
+    preload();
     render();
     load();
     getResult();
-    validateInput();
-    swapCurrencies();
+    validate();
+    swap();
   };
 
   init();
