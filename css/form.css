@@ -118,6 +118,7 @@
   border-radius: 10px;
   border: 1px solid #888;
   background-color: #f0f2f4;
+  line-height: 0.95;
 }
 .form__exchange-icon {
   cursor: pointer;
