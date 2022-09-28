@@ -2,6 +2,7 @@
   width: 400px;
 }
 .form__fieldset {
+  padding: 10px 50px;
   border: 0;
   border-radius: 10px;
   background-color: #fff;
@@ -25,9 +26,15 @@
   font-size: 24px;
 }
 .form__wrapper {
-  padding: 40px;
+  padding: 40px 0;
   margin-top: -25px;
   margin-bottom: 29px;
+}
+.form__paragraph {
+  margin-bottom: 5px;
+}
+.form__paragraph--small {
+  font-size: 12px;
 }
 .form__row--icon .form__paragraph {
   font-size: 18px;
@@ -36,9 +43,6 @@
   .form__row--icon {
     display: none;
   }
-}
-.form__paragraph {
-  margin-bottom: 5px;
 }
 .form__input {
   width: 100%;
