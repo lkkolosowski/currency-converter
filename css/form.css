@@ -29,11 +29,11 @@
   margin-top: -25px;
   margin-bottom: 29px;
 }
-.form__divider--icon .form__paragraph {
+.form__row--icon .form__paragraph {
   font-size: 18px;
 }
 @media screen and (max-width: 399px) {
-  .form__divider--icon {
+  .form__row--icon {
     display: none;
   }
 }
@@ -78,7 +78,7 @@
   font-size: 12px;
   margin-top: 5px;
 }
-.form__drop-list {
+.form__col {
   display: flex;
   margin-top: 20px;
   align-items: center;
