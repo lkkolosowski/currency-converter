@@ -86,11 +86,7 @@
   const render = (selectElements) => {
     selectElements.forEach((selectElement) => {
       for (const currency of currencies) {
-        let optionListString = `
-        <option value="${currency.code}">
-        ${currency.code}
-        </option>
-        `;
+        let optionListString = `<option value="${currency.code}">${currency.code}</option>`;
         selectElement.insertAdjacentHTML("beforeend", optionListString);
       }
     });
