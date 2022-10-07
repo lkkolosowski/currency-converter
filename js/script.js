@@ -74,11 +74,6 @@
     },
   ];
 
-  const selectElements = document.querySelectorAll(".js-form-select");
-  const fromCurrency = document.querySelector(".js-from-currency");
-  const toCurrency = document.querySelector(".js-to-currency");
-  const amountInput = document.querySelector(".js-amount");
-
   const preload = () => {
     const preloaderElement = document.querySelector(".js-preloader");
     let preloaderString = "";
@@ -88,7 +83,7 @@
     preloaderElement.innerHTML = preloaderString;
   };
 
-  const render = () => {
+  const render = (selectElements) => {
     selectElements.forEach((selectElement) => {
       for (const currency of currencies) {
         let optionListString = `
@@ -102,7 +97,7 @@
     document.querySelector(".js-to-currency").getElementsByTagName("option")[1].selected = "selected";
   };
 
-  const load = () => {
+  const load = (selectElements) => {
     selectElements.forEach((selectElement) => {
       const renderCaption = ({ name, flag }) => {
         selectElement.parentElement.querySelector(".js-img").src = `https://flagicons.lipis.dev/flags/4x3/${flag}.svg`;
@@ -115,34 +110,34 @@
     });
   };
 
-  const getRate = () => {
+  const getRate = (amountInput, fromCurrency, toCurrency) => {
     let amount = amountInput.value;
     const resultText = document.querySelector(".js-result-text");
     let result = (+amount * (+currencies[toCurrency.selectedIndex].rate / +currencies[fromCurrency.selectedIndex].rate)).toFixed(2);
     resultText.innerHTML = `${amount} ${currencies[fromCurrency.selectedIndex].code} = ${result} ${currencies[toCurrency.selectedIndex].code}`;
   };
 
-  const getResult = () => {
-    getRate();
+  const getResult = (selectElements, amountInput, fromCurrency, toCurrency) => {
+    getRate(amountInput, fromCurrency, toCurrency);
     selectElements.forEach((selectElement) => {
       selectElement.addEventListener("change", (e) => {
         e.preventDefault();
-        getRate();
+        getRate(amountInput, fromCurrency, toCurrency);
       });
     });
     amountInput.addEventListener("input", () => {
-      getRate();
+      getRate(amountInput, fromCurrency, toCurrency);
     });
   };
 
-  const swap = () => {
+  const swap = (fromCurrency, toCurrency, selectElements, amountInput) => {
     const exchangeIcon = document.querySelector(".js-exchange-icon");
     exchangeIcon.addEventListener("click", () => {
       let bufferValue = fromCurrency.value;
       fromCurrency.value = toCurrency.value;
       toCurrency.value = bufferValue;
-      load();
-      getRate();
+      load(selectElements);
+      getRate(amountInput, fromCurrency, toCurrency);
     });
   };
 
@@ -158,12 +153,16 @@
   };
 
   const init = () => {
+    const selectElements = document.querySelectorAll(".js-form-select");
+    const fromCurrency = document.querySelector(".js-from-currency");
+    const toCurrency = document.querySelector(".js-to-currency");
+    const amountInput = document.querySelector(".js-amount");
     preload();
-    render();
-    load();
-    getResult();
+    render(selectElements);
+    load(selectElements);
+    getResult(selectElements, amountInput, fromCurrency, toCurrency);
     validate();
-    swap();
+    swap(fromCurrency, toCurrency, selectElements, amountInput);
   };
 
   init();
