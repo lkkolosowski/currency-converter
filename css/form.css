@@ -13,6 +13,7 @@
 @media screen and (max-width: 399px) {
   .form__fieldset {
     border-radius: 0;
+    padding: 10px 20px;
   }
 }
 .form__legend {
