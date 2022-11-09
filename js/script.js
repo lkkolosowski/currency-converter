@@ -108,9 +108,9 @@
 
   const getRate = (amountInput, fromCurrency, toCurrency) => {
     let amount = amountInput.value;
-    const resultText = document.querySelector(".js-result-text");
+    const resultInput = document.querySelector(".js-result");
     let result = (+amount * (+currencies[toCurrency.selectedIndex].rate / +currencies[fromCurrency.selectedIndex].rate)).toFixed(2);
-    resultText.innerHTML = `${amount} ${currencies[fromCurrency.selectedIndex].code} = ${result} ${currencies[toCurrency.selectedIndex].code}`;
+    resultInput.value = `${amount} ${currencies[fromCurrency.selectedIndex].code} = ${result} ${currencies[toCurrency.selectedIndex].code}`;
   };
 
   const getResult = (selectElements, amountInput, fromCurrency, toCurrency) => {

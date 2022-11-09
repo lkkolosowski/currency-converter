@@ -30,32 +30,32 @@
         <legend align="center" class="form__legend">Konwerter walutowy</legend>
         <div class="form__wrapper">
           <div class="form__amount">
-            <p class="form__paragraph">Wprowadź ilość</p>
-            <input type="number" class="form__input js-amount" value="1" />
+            <label for="amount" class="form__label">Wprowadź ilość</label>
+            <input type="number" id="amount" class="form__input js-amount" value="1" />
           </div>
           <div class="form__col">
             <div class="form__row">
-              <p class="form__paragraph">Przelicz z</p>
+              <label for="source-currency" class="form__label">Przelicz z</label>
               <div class="form__select-box">
                 <img class="form__image js-img" src="" alt="flag" />
-                <select class="form__select js-form-select js-from-currency"></select>
+                <select id="source-currency" class="form__select js-form-select js-from-currency"></select>
                 <p class="form__caption js-caption"></p>
               </div>
             </div>
             <div class="form__row">
-              <p class="form__paragraph"><i class="form__exchange-icon fas fa-exchange-alt js-exchange-icon"></i></p>
+              <p class="form__exchange"><i class="form__exchange-icon fas fa-exchange-alt js-exchange-icon"></i></p>
             </div>
             <div class="form__row">
-              <p class="form__paragraph">Przelicz na</p>
+              <label for="target-currency" class="form__label">Przelicz na</label>
               <div class="form__select-box">
                 <img class="form__image js-img" src="" alt="flag" />
-                <select class="form__select js-form-select js-to-currency"></select>
+                <select id="target-currency" class="form__select js-form-select js-to-currency"></select>
                 <p class="form__caption js-caption"></p>
               </div>
             </div>
           </div>
-          <p class="form__paragraph">Kurs wymiany</p>
-          <div class="form__result js-result-text"></div>
+          <label for="result" class="form__label">Kurs wymiany</label>
+          <input type="text" id="result" disabled class="form__input js-result" />
         </div>
         <p class="form__paragraph form__paragraph--small">Kurs walut został zaktualizowany w dniu 28.09.2022</p>
       </fieldset>
